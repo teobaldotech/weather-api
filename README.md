@@ -1,40 +1,107 @@
-# weather-api
+# 🌦️ Weather API
 
-[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Go Report Card](https://goreportcard.com/badge/github.com/robertoduessmann/weather-api)](https://goreportcard.com/report/github.com/robertoduessmann/weather-api)
 [![GoDoc](https://godoc.org/github.com/robertoduessmann/weather-api?status.svg)](https://godoc.org/github.com/robertoduessmann/weather-api)
 
 > A REST API to check the current weather.
 
-> https://goweather.xyz/v2/weather/Berlin<br /> > https://goweather.xyz/v2/weather/{city}
+API REST desenvolvida em Go para consultar informações meteorológicas por cidade, com exemplos de temperatura, vento, descrição do clima e previsão do tempo.
 
-## Build locally (Mac users)
+## 📑 Sumário
 
-```sh
+- [Visão geral](#-visão-geral)
+- [Endpoints](#-endpoints)
+- [Pré-requisitos](#-pré-requisitos)
+- [Instalação e execução](#-instalação-e-execução)
+- [Utilização](#-utilização)
+- [Exemplo de resposta](#-exemplo-de-resposta)
+- [Clientes web](#-clientes-web)
+- [Licença](#-licença)
+
+## 🌍 Visão geral
+
+O `weather-api` oferece endpoints HTTP para consulta de informações meteorológicas por cidade.
+
+## 🔗 Endpoints
+
+### API pública
+
+**Consultar o clima de uma cidade**
+
+```http
+GET https://goweather.xyz/v2/weather/{city}
+```
+
+Exemplo para Berlim:
+
+```http
+GET https://goweather.xyz/v2/weather/Berlin
+```
+
+Substitua `{city}` pelo nome da cidade desejada.
+
+> A disponibilidade atual do serviço público não foi verificada. Os endereços acima refletem as URLs registradas no projeto.
+
+### API local
+
+Quando a aplicação estiver em execução localmente:
+
+```http
+GET http://localhost:3000/weather/{city}
+```
+
+## 🛠️ Pré-requisitos
+
+- Go instalado no ambiente.
+- Git para clonar o repositório.
+
+## 🚀 Instalação e execução
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/robertoduessmann/weather-api.git
+cd weather-api
+```
+
+### 2. Compile o projeto
+
+```bash
 go build
 ```
 
-## Run
+### 3. Execute a aplicação
 
-```sh
+No macOS ou Linux:
+
+```bash
 ./weather-api
 ```
 
-## Usage
+No Windows, caso o executável gerado seja `weather-api.exe`:
 
-```sh
-curl http://localhost:3000/weather/{city}
+```powershell
+.\weather-api.exe
 ```
 
-## Example
+## 📡 Utilização
 
-#### Request
+Faça uma requisição à API local utilizando `curl`:
 
-```sh
+```bash
 curl http://localhost:3000/weather/Curitiba
 ```
 
-#### Response
+Para consultar o endpoint público:
+
+```bash
+curl https://goweather.xyz/v2/weather/Curitiba
+```
+
+## 📦 Exemplo de resposta
+
+Exemplo ilustrativo do formato JSON documentado no projeto:
 
 ```json
 {
@@ -56,19 +123,56 @@ curl http://localhost:3000/weather/Curitiba
 }
 ```
 
-## Web Version
+### Descrição dos campos
 
-Few web clients of the API and their Projects:
+| Campo | Descrição |
+|---|---|
+| `temperature` | Temperatura atual. |
+| `wind` | Velocidade do vento. |
+| `description` | Descrição das condições meteorológicas. |
+| `forecast` | Lista de previsões. |
+| `forecast[].day` | Identificador do dia previsto. |
+| `forecast[].temperature` | Temperatura prevista. |
+| `forecast[].wind` | Velocidade do vento prevista. |
 
-1. **Client:** [https://reacttempo.netlify.app/](https://reacttempo.netlify.app/)  
-   **Project:** [https://github.com/GabrielCampos99/appTempo](https://github.com/GabrielCampos99/appTempo)
+**Nota:** os valores apresentados são exemplos e não representam dados meteorológicos em tempo real.
 
-2. **Client:** [https://emaniaditya.github.io/weather-app](https://emaniaditya.github.io/weather-app)  
-   **Project:** [https://github.com/emaniaditya/weather-app/](https://github.com/emaniaditya/weather-app/)
+## 🖥️ Clientes web
 
-3. **Client:** [https://weather-react-tsx.netlify.app/](https://weather-react-tsx.netlify.app/)  
-   **Project:** [https://github.com/keissiant/weather-api-react.tsx](https://github.com/keissiant/weather-api-react.tsx)
+Projetos de clientes web listados na documentação original. A compatibilidade atual com a API precisa ser confirmada.
 
-## License
+### 1. React Tempo
 
-The MIT License ([MIT](https://github.com/robertoduessmann/weather-api/blob/master/LICENSE))
+- **Aplicação:** https://reacttempo.netlify.app/
+- **Repositório:** https://github.com/GabrielCampos99/appTempo
+
+### 2. Weather App
+
+- **Aplicação:** https://emaniaditya.github.io/weather-app
+- **Repositório:** https://github.com/emaniaditya/weather-app/
+
+### 3. Weather React TSX
+
+- **Aplicação:** https://weather-react-tsx.netlify.app/
+- **Repositório:** https://github.com/keissiant/weather-api-react.tsx
+
+## 🤝 Contribuição
+
+Contribuições para a documentação e o código são bem-vindas.
+
+1. Faça um fork do repositório.
+2. Crie uma branch para sua alteração.
+3. Implemente e teste as mudanças.
+4. Envie um pull request com uma descrição clara.
+
+Consulte as orientações existentes no repositório antes de contribuir.
+
+## 📄 Licença
+
+Este projeto utiliza a licença MIT, conforme indicado na documentação original.
+
+Consulte o arquivo [LICENSE](LICENSE) para acessar os termos completos.
+
+## 🔗 Repositório
+
+Código-fonte: https://github.com/robertoduessmann/weather-api
