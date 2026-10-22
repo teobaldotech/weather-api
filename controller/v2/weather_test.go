@@ -1,4 +1,4 @@
-```go
+
 package main
 
 import "testing"
@@ -27,7 +27,7 @@ func TestCurrentConditionTemp(t *testing.T) {
 		{name: "whitespace unit", unit: " ", expected: "17 °C"},
 	}
 
-	runUnitTests(t, cc.Temp, tests, "Temp")
+	runUnitTests(t, cc.Temp, tests, "CurrentCondition.Temp")
 }
 
 func TestCurrentConditionWindspeed(t *testing.T) {
@@ -46,7 +46,7 @@ func TestCurrentConditionWindspeed(t *testing.T) {
 		{name: "whitespace unit", unit: " ", expected: "19 km/h"},
 	}
 
-	runUnitTests(t, cc.Windspeed, tests, "Windspeed")
+	runUnitTests(t, cc.Windspeed, tests, "CurrentCondition.Windspeed")
 }
 
 func TestHourlyTemp(t *testing.T) {
@@ -65,7 +65,7 @@ func TestHourlyTemp(t *testing.T) {
 		{name: "whitespace unit", unit: " ", expected: "30 °C"},
 	}
 
-	runUnitTests(t, h.Temp, tests, "Temp")
+	runUnitTests(t, h.Temp, tests, "Hourly.Temp")
 }
 
 func TestHourlyWindspeed(t *testing.T) {
@@ -84,7 +84,7 @@ func TestHourlyWindspeed(t *testing.T) {
 		{name: "whitespace unit", unit: " ", expected: "25 km/h"},
 	}
 
-	runUnitTests(t, h.Windspeed, tests, "Windspeed")
+	runUnitTests(t, h.Windspeed, tests, "Hourly.Windspeed")
 }
 
 func runUnitTests(
@@ -96,8 +96,6 @@ func runUnitTests(
 	t.Helper()
 
 	for _, tt := range tests {
-		tt := tt
-
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
 
@@ -114,4 +112,3 @@ func runUnitTests(
 		})
 	}
 }
-```
